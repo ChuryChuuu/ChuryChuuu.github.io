@@ -1,0 +1,301 @@
+/* Reset global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Ensure the main content grows to push the footer down */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Animated Gradient for Header and Footer */
+header, footer {
+    background: linear-gradient(45deg, #FF007F, #00FFFF, #FF007F, #00FFFF);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+    padding: 20px;
+    text-align: center;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Navigation Bar with Box */
+header nav ul {
+    list-style: none;
+    background-color: rgba(30, 30, 30, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+header nav ul li a {
+    color: #FFF;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+header nav ul li a:hover {
+    color: #FF00FF;
+}
+
+/* Center All H1 Titles */
+h1 {
+    background: linear-gradient(45deg, #FF007F, #00FFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-top: 40px;
+}
+
+/* Justify and Center Text on Index with Gradient */
+#welcome p.bienvenida {
+    text-align: justify;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    background: linear-gradient(45deg, #FFA500, #800080);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+/* Bigger Centered Images for Index and Contact */
+.imagen-fay {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+}
+
+/* Smaller Image for About */
+.foto-perfil {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    margin: 20px auto;
+    display: block;
+}
+
+/* Center and Style the "Download CV" Button */
+#about .btn {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    width: fit-content;
+}
+
+/* Footer Text with Box */
+footer {
+    margin-top: auto;
+}
+
+footer p {
+    font-size: 1em;
+    background-color: rgba(30, 30, 30, 0.8);
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+footer a {
+    color: #FFF;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+footer a:hover {
+    color: #FF00FF;
+}
+
+/* Sección de Portafolio */
+#portfolio {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.projects-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.project {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.project:hover {
+    transform: scale(1.05);
+}
+
+.project-img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.project h3 {
+    background: linear-gradient(45deg, #FFA500, #800080);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.project p {
+    background: linear-gradient(45deg, #FFA500, #800080);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.project .btn {
+    background-color: #00FFFF;
+    color: #121212;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.project .btn:hover {
+    background-color: #FF007F;
+    color: #FFF;
+}
+
+/* Centered and Justified Text with Gradient */
+.centered-justified {
+    text-align: justify;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    background: linear-gradient(45deg, #FFA500, #800080);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+/* Random Phrase Section */
+#random-phrase {
+    text-align: center;
+    margin: 40px 0;
+    padding: 20px;
+    background-color: rgba(30, 30, 30, 0.8);
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+#phrase-text {
+    font-size: 1.5em;
+    background: linear-gradient(45deg, #FFA500, #800080);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+#phrase-author {
+    font-size: 1.1em;
+    color: #D3D3D3;
+    font-style: italic;
+}
+
+/* Center and align social links in a single line */
+.social-links ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.social-links ul li {
+    display: inline-block;
+}
+
+.social-links ul li a {
+    color: #FFF;
+    text-decoration: none;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.social-links ul li a:hover {
+    color: #FF00FF;
+}
+
+/* Social Links Styles */
+.social-links ul li a i.fab.fa-linkedin {
+    color: #0A66C2; /* LinkedIn blue */
+}
+
+.social-links ul li a i.fas.fa-gamepad {
+    color: #FF5C5C; /* itch.io red */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .projects-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project {
+        width: 90%;
+    }
+
+    .imagen-fay {
+        max-width: 300px;
+    }
+}
