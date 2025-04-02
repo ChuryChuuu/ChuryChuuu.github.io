@@ -108,12 +108,91 @@ h1 {
     display: block;
 }
 
-/* Center and Style the "Download CV" Button */
-#about .btn {
-    display: block;
-    margin: 20px auto;
+/* Centered and Justified Text with Gradient */
+.centered-justified {
+    text-align: justify;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    background: linear-gradient(45deg, #FFA500, #800080);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+/* ====================== */
+/* CV Section Styles */
+/* ====================== */
+.cv-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(30, 30, 30, 0.8);
+    border-radius: 10px;
     text-align: center;
-    width: fit-content;
+}
+
+.cv-container h2 {
+    background: linear-gradient(45deg, #FFA500, #800080);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.pdf-viewer {
+    margin: 20px 0;
+    border: 2px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.pdf-viewer iframe {
+    border: none;
+}
+
+.download-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.download-options .btn {
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.download-options .pdf-btn {
+    background-color: #FF007F;
+    color: white;
+}
+
+.download-options .word-btn {
+    background-color: #00FFFF;
+    color: #121212;
+}
+
+.download-options .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.download-options .pdf-btn:hover {
+    background-color: #e60073;
+}
+
+.download-options .word-btn:hover {
+    background-color: #00e6e6;
 }
 
 /* Footer Text with Box */
@@ -204,51 +283,80 @@ footer a:hover {
     color: #FFF;
 }
 
-/* Art Gallery Section */
+/* ====================== */
+/* Art Gallery - Pinterest Masonry */
+/* ====================== */
 #art-gallery {
     text-align: center;
     margin: 40px 0;
+    padding: 0 20px;
 }
 
 .art-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    position: relative;
+    margin: 0 auto;
+    max-width: 1400px;
+    padding: 0 20px;
+    column-count: 3;
+    column-gap: 20px;
 }
 
 .art-item {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+    break-inside: avoid;
     background-color: #1e1e1e;
     border-radius: 10px;
-    padding: 20px;
-    width: 300px;
-    text-align: center;
-    transition: transform 0.3s ease;
+    overflow: hidden;
+    transform: translateZ(0);
 }
 
 .art-item:hover {
-    transform: scale(1.05);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(255, 0, 255, 0.4);
+    z-index: 10;
 }
 
 .art-img {
     width: 100%;
-    max-width: 300px;
-    height: auto;
     border-radius: 8px;
-    margin-bottom: 15px;
+    display: block;
+    background: #1e1e1e;
+    transition: transform 0.4s ease;
 }
 
-/* Centered and Justified Text with Gradient */
-.centered-justified {
-    text-align: justify;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px;
-    background: linear-gradient(45deg, #FFA500, #800080);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 1.2em;
-    line-height: 1.6;
+.art-item:hover .art-img {
+    transform: scale(1.03);
+}
+
+/* Lightbox Enhancements */
+.lightbox .lb-image {
+    border: 3px solid #FF00FF !important;
+    border-radius: 10px !important;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+}
+
+.lightbox .lb-nav a.lb-prev, 
+.lightbox .lb-nav a.lb-next {
+    opacity: 0.9 !important;
+    filter: drop-shadow(0 0 8px #00FFFF);
+    transition: all 0.3s ease;
+}
+
+.lightbox .lb-nav a.lb-prev:hover, 
+.lightbox .lb-nav a.lb-next:hover {
+    filter: drop-shadow(0 0 12px #00FFFF) brightness(1.2);
+}
+
+.lightbox .lb-close {
+    filter: drop-shadow(0 0 5px #FF007F);
+    transition: all 0.3s ease;
+}
+
+.lightbox .lb-close:hover {
+    filter: drop-shadow(0 0 10px #FF007F) brightness(1.2);
 }
 
 /* Random Phrase Section */
@@ -306,14 +414,25 @@ footer a:hover {
 
 /* Social Links Styles */
 .social-links ul li a i.fab.fa-linkedin {
-    color: #0A66C2; /* LinkedIn blue */
+    color: #0A66C2;
 }
 
 .social-links ul li a i.fas.fa-gamepad {
-    color: #FF5C5C; /* itch.io red */
+    color: #FF5C5C;
 }
 
 /* Responsive Design */
+@media (max-width: 900px) {
+    .art-container {
+        column-count: 2;
+        column-gap: 15px;
+    }
+    
+    .art-item:hover {
+        transform: translateY(-5px) scale(1.02);
+    }
+}
+
 @media (max-width: 768px) {
     header nav ul li {
         display: block;
@@ -331,5 +450,30 @@ footer a:hover {
 
     .imagen-fay {
         max-width: 300px;
+    }
+
+    /* CV Section Mobile Adjustments */
+    .pdf-viewer {
+        height: 400px;
+    }
+    
+    .download-options {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .download-options .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .art-container {
+        column-count: 1;
+    }
+    
+    .art-item {
+        margin-bottom: 15px;
     }
 }

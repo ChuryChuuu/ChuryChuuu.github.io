@@ -26,9 +26,31 @@
         <h1>About Me</h1>
         <img src="images/Me.jpg" alt="Wanwix" class="foto-perfil">
         <p class="centered-justified">
-            Ah, what joy it is to speak of my journey through the realms of digital art and 3D design! Since time immemorial, I’ve been drawn to the wonders of three-dimensional creation, like a knight enchanted by a field of blooming flowers. In the noble art of character modeling, I’ve honed my craft, shaping forms with a steady hand and a bold vision. Yet, it is not merely the act of shaping figures that fills my soul—it is the embrace of texture, the dance of animation, and the life that springs from every carefully carved detail.
+            Ah, what joy it is to speak of my journey through the realms of digital art and 3D design! Since time immemorial, I've been drawn to the wonders of three-dimensional creation, like a knight enchanted by a field of blooming flowers. In the noble art of character modeling, I've honed my craft, shaping forms with a steady hand and a bold vision. Yet, it is not merely the act of shaping figures that fills my soul—it is the embrace of texture, the dance of animation, and the life that springs from every carefully carved detail.
         </p>
-        <a href="assets/Documents/CV-Generation-DeividEduardoGuarinTovar.docx" download class="btn">Download CV</a>
+        
+        <!-- CV Section -->
+        <div class="cv-container">
+            <h2>My Curriculum Vitae</h2>
+            
+            <!-- PDF Viewer -->
+            <div class="pdf-viewer">
+                <iframe src="assets/Documents/CV-Generation-DeividEduardoGuarinTovar.pdf" width="100%" height="600px"></iframe>
+            </div>
+            
+            <!-- Download Options -->
+            <div class="download-options">
+                <a href="assets/Documents/CV-Generation-DeividEduardoGuarinTovar.pdf" target="_blank" class="btn pdf-btn">
+                    <i class="fas fa-external-link-alt"></i> Open in New Tab
+                </a>
+                <a href="assets/Documents/CV-Generation-DeividEduardoGuarinTovar.docx" download class="btn word-btn">
+                    <i class="fas fa-file-word"></i> Download Word Version
+                </a>
+                <a href="assets/Documents/CV-Generation-DeividEduardoGuarinTovar.pdf" download class="btn pdf-btn">
+                    <i class="fas fa-file-pdf"></i> Download PDF Version
+                </a>
+            </div>
+        </div>
     </section>
 
     <!-- Random Phrase Section -->
@@ -49,7 +71,6 @@
         </p>
     </footer>
 
-    <!-- Link to the external JavaScript file -->
     <script src="scripts.js"></script>
 </body>
 </html>

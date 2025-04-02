@@ -44,13 +44,12 @@ const phrases = [
     { text: "Sabes que mi idioma nativo es español, ¿verdad? No? Bueno, ahora lo sabes :)", author: "by a bilingual Wanwix" },
 ];
 
-// Function to get a random phrase
+// Random phrase functions - UNCHANGED
 function getRandomPhrase() {
     const randomIndex = Math.floor(Math.random() * phrases.length);
     return phrases[randomIndex];
 }
 
-// Function to display the random phrase
 function displayRandomPhrase() {
     const phraseText = document.getElementById('phrase-text');
     const phraseAuthor = document.getElementById('phrase-author');
@@ -60,5 +59,86 @@ function displayRandomPhrase() {
     phraseAuthor.textContent = `— ${randomPhrase.author}`;
 }
 
-// Run the function when the page loads
-window.onload = displayRandomPhrase;
+/* ====================== */
+/* PINTEREST-STYLE MASONRY GRID */
+/* ====================== */
+function initMasonryGrid() {
+    const grid = document.querySelector('.art-container');
+    if (!grid) return;
+
+    // Initialize Lightbox with smooth transitions
+    if (typeof lightbox !== 'undefined') {
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            'fadeDuration': 250,
+            'imageFadeDuration': 250
+        });
+    }
+
+    // Wait for images to load before layout
+    const images = grid.querySelectorAll('img');
+    const totalImages = images.length;
+    let loadedImages = 0;
+
+    const checkImagesLoaded = () => {
+        loadedImages++;
+        if (loadedImages === totalImages) {
+            layoutGrid();
+        }
+    };
+
+    images.forEach(img => {
+        if (img.complete) {
+            checkImagesLoaded();
+        } else {
+            img.addEventListener('load', checkImagesLoaded);
+            img.addEventListener('error', checkImagesLoaded); // Handle broken images
+        }
+    });
+
+    function layoutGrid() {
+        // Calculate column count based on viewport width
+        const containerWidth = grid.offsetWidth;
+        const columnWidth = 250; // Your preferred column width
+        const gap = 20; // Gap between items
+        const columnCount = Math.max(2, Math.floor(containerWidth / (columnWidth + gap)));
+        const columns = new Array(columnCount).fill(0).map(() => []); // Store items per column
+        const columnHeights = new Array(columnCount).fill(0); // Track column heights
+        
+        // Position each item in the shortest column
+        const items = grid.querySelectorAll('.art-item');
+        items.forEach(item => {
+            const shortestColumn = columnHeights.indexOf(Math.min(...columnHeights));
+            columns[shortestColumn].push(item);
+            
+            item.style.position = 'absolute';
+            item.style.width = `calc(${100 / columnCount}% - ${gap * (columnCount - 1) / columnCount}px)`;
+            item.style.left = `${(100 / columnCount) * shortestColumn}%`;
+            item.style.top = `${columnHeights[shortestColumn]}px`;
+            
+            columnHeights[shortestColumn] += item.offsetHeight + gap;
+        });
+
+        // Set container height
+        grid.style.height = `${Math.max(...columnHeights)}px`;
+    }
+
+    // Responsive layout adjustments
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            layoutGrid();
+        }, 100);
+    });
+
+    // Initial layout
+    layoutGrid();
+}
+
+// Initialize everything
+window.addEventListener('load', () => {
+    displayRandomPhrase(); // Your existing random phrases
+    initMasonryGrid();     // New Pinterest-style grid
+});
